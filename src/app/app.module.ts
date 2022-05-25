@@ -14,7 +14,14 @@ import { ClientComponent } from './client/client.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { HomeComponent } from './home/home.component';
 import {DockModule} from 'primeng/dock';
-
+import {TableModule} from 'primeng/table';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { AddClientComponent } from './add-client/add-client.component';
+import { UpdateComponentComponent } from './update-component/update-component.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,10 @@ import {DockModule} from 'primeng/dock';
     ToolbarComponent,
     ClientComponent,
     PortfolioComponent,
-    HomeComponent
+    HomeComponent,
+    AddClientComponent,
+    UpdateComponentComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -39,9 +49,21 @@ import {DockModule} from 'primeng/dock';
              return     localStorage.getItem('access_token');}
       }
     }),
-    DockModule
+    DockModule,
+    TableModule,
+    SplitButtonModule,
+    ButtonModule,
+    ToolbarModule,
+    DynamicDialogModule,
+    FlexLayoutModule
   ],
-  providers: [],
+  entryComponents: [  
+    AddClientComponent,
+    UpdateComponentComponent
+  ],  
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}  
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
