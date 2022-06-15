@@ -22,6 +22,31 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AddClientComponent } from './add-client/add-client.component';
 import { UpdateComponentComponent } from './update-component/update-component.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SearchClientComponent } from './search-client/search-client.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
+import { ClientToolbarComponent } from './client-toolbar/client-toolbar.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { CalendarModule } from "primeng/calendar";
+
+
+import { MatButtonModule } from 
+    '@angular/material/button';
+import { MatButtonToggleModule } from 
+    '@angular/material/button-toggle';
+import { MatDatepickerModule } from 
+    '@angular/material/datepicker';
+import { MatInputModule } from 
+    '@angular/material/input';
+import { MatFormFieldModule } from 
+    '@angular/material/form-field';
+import { MatNativeDateModule } from 
+    '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +58,11 @@ import { UpdateComponentComponent } from './update-component/update-component.co
     PortfolioComponent,
     HomeComponent,
     AddClientComponent,
-    UpdateComponentComponent
+    UpdateComponentComponent,
+    SidebarComponent,
+    SearchClientComponent,
+    DynamicTableComponent,
+    ClientToolbarComponent
     
   ],
   imports: [
@@ -55,15 +84,32 @@ import { UpdateComponentComponent } from './update-component/update-component.co
     ButtonModule,
     ToolbarModule,
     DynamicDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    Ng2SearchPipeModule,
+    FormsModule, 
+    NgxPaginationModule,
+    MatDatepickerModule,
+    CalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
+    MatInputModule,
+    MatFormFieldModule ,
+    MatButtonToggleModule ,
+    MatButtonModule
   ],
   entryComponents: [  
     AddClientComponent,
-    UpdateComponentComponent
+    UpdateComponentComponent,
+    SidebarModule
   ],  
-  providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}  
-  ],
+  providers: [{
+    provide: MAT_DIALOG_DEFAULT_OPTIONS,
+    useValue: {
+      hasBackdrop: true,
+      backdropClass: 'modal-backdrop',
+      closeOnNavigation: true,
+    },
+  },],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

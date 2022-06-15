@@ -3,29 +3,31 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { catchError, map, Observable, retry } from 'rxjs';
-import { clients } from '../Models/clients';
+import { Portfolio } from '../Models/portfolio';
 
-const baseUrl = 'http://localhost:3000/Clients' ;
+const baseUrl = 'http://localhost:3000/Portfolio' ;
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
-  [x: string]: any;
+export class PortfolioService {
+
+  http!: HttpClient;
 
   constructor(private httpClient : HttpClient) {}
-  findAllClients(): Observable<clients[]>{
-    let Clients : clients [];
-    return this.httpClient.get<clients[]>( baseUrl ).
+
+  findAllClients(): Observable<Portfolio[]>{
+    let Portfolios : Portfolio [];
+    return this.httpClient.get<Portfolio[]>( baseUrl ).
     pipe(
       map(data=>
-       {Clients=data;
-        console.log(Clients) ;
-        return Clients}  
+       {Portfolios=data;
+        return Portfolios}  
       )
      ) ;
   
   }
+
   create(data: any): Observable<any> {
     return this.httpClient.post(baseUrl, data);
   }
@@ -38,8 +40,12 @@ export class ClientService {
   deleteAll(): Observable<any> {
     return this.httpClient.delete(baseUrl);
   }
-  findByID(KUNDENID: any): Observable<clients> {
+
+  findByID(PORTFOLIONO: any): Observable<Portfolio> {
     
-      return this.httpClient.get<clients>( baseUrl + '/' + KUNDENID ).pipe(retry(1), catchError(this['handleError']));
-  }
+    return this.httpClient.get<Portfolio>( baseUrl + '/' + PORTFOLIONO ).pipe(retry(1));
+  }  
+
+
+
 }

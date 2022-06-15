@@ -1,0 +1,23 @@
+<button class="mat-raised-button" position="left" (click)="close()">Close</button>
+
+
+<mat-form-field class="example-full-width">
+  <span matPrefix> </span>
+  <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "searchText">
+  <button matSuffix mat-button><mat-icon >Search</mat-icon></button>
+  </mat-form-field>
+<table width="15%" border="1">
+  <br/>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of Clients | filter:searchText">
+      <td>{{client.KUNDENID}}</td>
+      <td>{{client.NAME}}</td>
+    </tr>
+  </tbody>
+</table>

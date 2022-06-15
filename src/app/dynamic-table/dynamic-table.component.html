@@ -1,0 +1,52 @@
+<div class="w3-row">
+  <div   class="w3-quarter" >
+    <fieldset class="overflow"   >
+      <legend>  
+        Table options  
+      </legend>
+      <div   *ngFor="let header of allHeaders ; let i= index ;"
+      [draggable]="header.isSelected"
+      (dragstart)="onDragstart(i)"
+      (dragover)="onDragover(i)"
+      (dragend)="onDragend(i)"
+      [ngClass]="{'dragged': dragTrace.src == i ,'dragged-over': dragTrace.dest == i  }" class = "header-selection">
+      
+      <input type="checkbox" (click)="toggleHeader(i)" [checked]="header.isSelected" />
+      <span style="float: right" >
+        {{header.key}}
+      </span>
+       
+      </div>
+    </fieldset>
+  </div>
+    <div class="w3-threequarter table-container">
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+      <table class="w3-table w3-stripped w3-bordered table" >
+        <thead class="thead-dark" >
+           <tr>
+             <th *ngFor="let x of tableData.headers"  > {{x.key}}</th>
+           </tr> 
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let row of tableData.data| paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index ">
+              <td *ngFor="let h of tableData.headers ">  {{row[h.key]}} </td>
+            </tr>
+        </tbody>
+        
+      </table>
+      
+    </div>
+    
+  </div>

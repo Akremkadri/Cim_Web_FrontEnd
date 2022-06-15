@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./update-component.component.css']
 })
 export class UpdateComponentComponent implements OnInit {
+  picker1: any
 
   constructor( public dialogRef: MatDialogRef<UpdateComponentComponent> ) { }
 
@@ -17,3 +18,4 @@ export class UpdateComponentComponent implements OnInit {
   }
 
 }
+               

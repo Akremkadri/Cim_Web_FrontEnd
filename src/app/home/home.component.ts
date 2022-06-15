@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import {DockModule} from 'primeng/dock';
+
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,10 @@ import {DockModule} from 'primeng/dock';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-  dockItems: MenuItem[] = []; 
+  events: string[] = [];
+  opened: boolean | undefined;
+
+  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host); 
 
 
   ngOnInit(): void {

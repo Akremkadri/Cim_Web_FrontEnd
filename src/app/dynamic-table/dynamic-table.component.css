@@ -1,0 +1,29 @@
+.table-container {
+    height: 100vh;
+    overflow-y: auto;
+   }
+   thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+   }
+   th {
+    text-align: left;
+   }
+   .header-selection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    margin: 5px;
+    border: 1px solid grey;
+    background-color: whitesmoke;
+    cursor: move;
+   }
+   .overflow {
+    /* Set overflow to scroll or auto */    
+    overflow: auto;
+    max-height: 500px;
+   }
+
+   
