@@ -1,23 +1,30 @@
-<button class="mat-raised-button" position="left" (click)="close()">Close</button>
 
 
-<mat-form-field class="example-full-width">
-  <span matPrefix> </span>
-  <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "searchText">
-  <button matSuffix mat-button><mat-icon >Search</mat-icon></button>
-  </mat-form-field>
-<table width="15%" border="1">
-  <br/>
-  <thead>
+<p-table #dt [columns]="cols" [value]="Clients" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]"
+  [totalRecords]="totalRecords" [pageLinks]="3" responsiveLayout="scroll" [style.background]="" >
+  <ng-template pTemplate="caption"  >
+    <i class="pi pi-times" position="left" (click)="close()"></i>
+    <div style="text-align: right" >        
+        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" style="width:auto">
+    </div>
+</ng-template>
+  
+  <ng-template pTemplate="header" let-columns>
+    <tr >
+
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <th>Id</th>
-      <th>Name</th>
+      <td *ngFor="let col of columns">
+        {{rowData[col.field]}}
+      </td>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let client of Clients | filter:searchText">
-      <td>{{client.KUNDENID}}</td>
-      <td>{{client.NAME}}</td>
-    </tr>
-  </tbody>
-</table>
+  </ng-template>
+</p-table>
+ 

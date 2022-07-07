@@ -16,7 +16,7 @@ export class PortfolioService {
 
   constructor(private httpClient : HttpClient) {}
 
-  findAllClients(): Observable<Portfolio[]>{
+  findAllPortfolios(): Observable<Portfolio[]>{
     let Portfolios : Portfolio [];
     return this.httpClient.get<Portfolio[]>( baseUrl ).
     pipe(

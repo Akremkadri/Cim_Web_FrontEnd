@@ -32,7 +32,8 @@ import { ClientToolbarComponent } from './client-toolbar/client-toolbar.componen
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CalendarModule } from "primeng/calendar";
-
+import {ReactiveFormsModule} from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs'; 
 
 import { MatButtonModule } from 
     '@angular/material/button';
@@ -46,6 +47,10 @@ import { MatFormFieldModule } from
     '@angular/material/form-field';
 import { MatNativeDateModule } from 
     '@angular/material/core';
+import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
+import { AddPortfolioComponent } from './portfolio-details/add-portfolio/add-portfolio.component';
+import { UpdatePortfolioComponent } from './portfolio-details/update-portfolio/update-portfolio.component';
+import { CLientPortfoliosComponent } from './portfolio-details/client-portfolios/client-portfolios.component';
 
 
 @NgModule({
@@ -62,7 +67,11 @@ import { MatNativeDateModule } from
     SidebarComponent,
     SearchClientComponent,
     DynamicTableComponent,
-    ClientToolbarComponent
+    ClientToolbarComponent,
+    PortfolioDetailsComponent,
+    AddPortfolioComponent,
+    UpdatePortfolioComponent,
+    CLientPortfoliosComponent
     
   ],
   imports: [
@@ -95,7 +104,9 @@ import { MatNativeDateModule } from
     MatInputModule,
     MatFormFieldModule ,
     MatButtonToggleModule ,
-    MatButtonModule
+    MatButtonModule ,
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   entryComponents: [  
     AddClientComponent,

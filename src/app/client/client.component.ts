@@ -17,7 +17,7 @@ import { ClientToolbarComponent } from '../client-toolbar/client-toolbar.compone
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css']
 })
-export class ClientComponent implements OnInit , OnDestroy , AfterViewInit  {
+export class ClientComponent implements OnInit  , AfterViewInit  {
   opened: boolean = false;
   searchText: any;
   public Clients!: clients[];
@@ -60,9 +60,7 @@ export class ClientComponent implements OnInit , OnDestroy , AfterViewInit  {
   }
 
   
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  
 
   ngOnInit(): void { 
     this.primengConfig.ripple = true;

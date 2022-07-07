@@ -8,13 +8,15 @@ import { ClientService } from '../Services/client.service';
   templateUrl: './search-client.component.html',
   styleUrls: ['./search-client.component.css']
 })
-export class SearchClientComponent implements OnInit , OnDestroy {
+export class SearchClientComponent implements OnInit  {
   searchText: any;
-  public Clients : clients [] = []
+  public Clients!: clients[];
   constructor(private clientservice: ClientService ,public dialogRef: MatDialogRef<SearchClientComponent> ) { }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  
+  cols!: any[];
+
+  totalRecords!: number;
+
 
   
 
@@ -22,7 +24,18 @@ export class SearchClientComponent implements OnInit , OnDestroy {
     this.clientservice.findAllClients().subscribe((res: clients [])=>{
       console.log(res);
       this.Clients = res;
-  })}
+      this.cols = [
+        { field: 'KUNDENID', header: 'Id' },
+        { field: 'BEZEICHNUNG', header: 'Description' },
+        { field: 'NAME', header: 'Full Name' }
+       ];
+      
+  })
+  this.totalRecords=this.cols.length;
+
+}
+
+  
   close() {
     this.dialogRef.close("Thanks for using me!");
   }
